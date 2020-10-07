@@ -29,9 +29,23 @@ npm install prop-types
 Warning: Failed prop type: Invalid prop `rating` of type `number` supplied to `Food`, expected `string`.
     - rating의 type이 number인데 string으로 정의되서 발생한 문제
 
+### App_ch4.js
+Ch4까지 사용했던 App.js 잠시 백업
+
+
 ### state
 동적 데이터를 다룰 때 사용 (동적 데이터: 변경될 가능성이 있는 데이터)
 ex. 객체의 구성요소 중 일부가 추가/삭제됨
 
-### App_ch4.js
-Ch4까지 사용했던 App.js 잠시 백업
+state가 변경되면 react내부에서 자동으로 render(); 를 호출하여 화면을 갱신한다. 단, state객체에 직접 접근하여 수정하면 render(); 가 호출되지 않는다.
+state는 setState(); 메서드를 호출하여 접근한다.
+
+### Class-Component LifeCycle
+1. constructor();
+2. render();
+3. componentDidMount();
+4. componentDidUpdate();
+5. componentWillUnMount();
+
+### axios
+npm install axios
