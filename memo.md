@@ -49,3 +49,25 @@ state는 setState(); 메서드를 호출하여 접근한다.
 
 ### axios
 npm install axios
+
+### NomadCoder Movie-API
+https://yts-proxy.now.sh/list_movies.json
+
+### router
+npm install react-router-dom 
+router props
+1. path
+2. component
+router는 '/' 기준으로 탐색하면서 화면을 그리므로 /a/b/c/d와 같은 url이 있는경우 a, b, c, d 각 컴포넌트들을 순서대로 화면에 그리게된다.
+최종 컴포넌트 d만 그리고 싶다면 <Route>에 exact={true} props를 전달한다.
+
+<a>는 링크를 누를 때마다 화면을 새로고침하므로, Virtual-Dom의 장점을 살리지 못한다. (변하는 부분만 갱신해야되는데 DOM을 새로 그려버리므로)
+따라서 리액트는 react-router-dom의 <Link> 컴포넌트를 사용한다.
+
+### route-props
+라우팅 대상이 되는 컴포넌트에 넘겨주는 기본 props
+(개발자가 설정하지 않아도 기본으로 전달되는 props로 Customizing 가능하다.)
+
+### Redirect
+잘못된 페이지 접근시 특정 경로로 보낼 수 있어야 한다.
+route-props의 history 참조

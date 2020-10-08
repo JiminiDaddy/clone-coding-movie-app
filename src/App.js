@@ -1,44 +1,24 @@
 import React from 'react';
-import axios from 'axios';
 
-// Class-Type Component : Component 클래스를 반드시 상속받아야 한다.
-class App extends React.Component {
+import { HashRouter, Route } from 'react-router-dom';
+import Navigation from './components/Navigation';
 
-  // render(); 가 호출된 후에 실행된다.
-  componentDidMount() {
-    this.getMovies();
-  }
+import Home from './routes/Home';
+import About from './routes/About';
+import Detail from './routes/Detail';
 
-  state = {
-    isLoading: true,    // true ? 로딩중 : 로딩완료
-    movies: [],         // 영화 데이터 목록
-  };
-
-  // 데이터를 읽어오는데 시간이 소요되므로 비동기로 처리한다.
-  getMovies = async () => {
-    // es5
-    //const movies = await axios.get('https://yts-proxy.now.sh/list_movies.json');
-    //console.log(movies.data.data.movies);
-    // es6
-    const {
-      data: {
-        data: {
-          movies
-        },
-      },
-    } = await axios.get('https://yts-proxy.now.sh/list_movies.json');
-    console.log(movies);
-    this.setState({movies: movies, isLoading: false});    // key=state, value=data
-  };
-
-  render() {
-    const { isLoading } = this.state;   // this.state.isLoading을 풀어쓰지 않기 위해 구조분해할당 방식 사용
-    return (
-      <div>
-        {isLoading ? 'Loading...' : 'Loading is completed.'}
-      </div>
-    );
-  }
+// Navigation, Route Component는 HashRouter 안에 있어야 한다.  
+// Route에는 path, component 2가지 props를 전달할 수 있다.
+// path: 이동할URL
+// component: URL에 해당하는 Component
+function App() {
+  return (
+    <HashRouter>
+      <Navigation />
+      <Route path="/" component={Home} exact={true} />
+      <Route path="/about" component={About} />
+      <Route path="/movie-detail" component={Detail}/>
+    </HashRouter>
+  );
 }
-
 export default App;
